@@ -14,18 +14,20 @@ const SideDrawer = props => {
 
   return (
     <Drawer
-      anchor="right"
+      anchor='right'
       open={props.open}
-      onClose={() => props.onClose(false)}>
-      <List component="nav">
-        {DrawerButtons.map(c => (
+      onClose={() => props.onClose(false)}
+    >
+      <List component='nav'>
+        {DrawerButtons.map(key => (
           <ListItem
-            key={c}
+            key={key}
             button
             onClick={() => {
-              console.log('c :', c);
-            }}>
-            {c}
+              console.log('Side Drawer Selected :', key);
+            }}
+          >
+            {key}
           </ListItem>
         ))}
       </List>
