@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './resources/styles.css';
+import { Element } from 'react-scroll';
 import Header from './components/header_footer/Header';
 import Featured from './components/featured';
 import VenueInfo from './components/venue_info';
@@ -13,11 +14,26 @@ class App extends Component {
     return (
       <div className='App'>
         <Header />
-        <Featured />
-        <VenueInfo />
-        <Highlights />
-        <Pricing />
-        <Location />
+        <Element name='featured'>
+          <Featured />
+        </Element>
+
+        <Element name='info'>
+          <VenueInfo />
+        </Element>
+
+        <Element name='highlights'>
+          <Highlights />
+        </Element>
+
+        <Element name='pricing'>
+          <Pricing />
+        </Element>
+
+        <Element name='location'>
+          <Location />
+        </Element>
+
         <Footer />
       </div>
     );

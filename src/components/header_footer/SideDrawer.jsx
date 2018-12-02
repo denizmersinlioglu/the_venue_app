@@ -2,15 +2,29 @@ import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import { scroller } from 'react-scroll';
 
 const SideDrawer = props => {
-  const DrawerButtons = [
-    'Event starts in',
-    'Venue Info',
-    'Highlights',
-    'Pricing',
-    'Location'
-  ];
+  const scrollToElement = element => {
+    scroller.scrollTo(element, {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+      offset: -100
+    });
+    props.onClose(false);
+  };
+
+  const drawerButtons = {
+    titles: [
+      'Event starts in',
+      'Venue Info',
+      'Highlights',
+      'Pricing',
+      'Location'
+    ],
+    links: ['featured', 'info', 'highlights', 'pricing', 'location']
+  };
 
   return (
     <Drawer
@@ -19,12 +33,12 @@ const SideDrawer = props => {
       onClose={() => props.onClose(false)}
     >
       <List component='nav'>
-        {DrawerButtons.map(key => (
+        {drawerButtons.titles.map((key, i) => (
           <ListItem
             key={key}
             button
             onClick={() => {
-              console.log('Side Drawer Selected :', key);
+              scrollToElement(drawerButtons.links[i]);
             }}
           >
             {key}
